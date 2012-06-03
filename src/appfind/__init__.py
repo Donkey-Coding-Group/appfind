@@ -296,7 +296,6 @@ def parse_desktop_file(filename, pixmaps, ):
     data = dict(parser.items('Desktop Entry'))
 
     try:
-<<<<<<< HEAD
         encoding = data.get('encoding', 'utf-8')
         result = {
             'name':       data['name'].decode(encoding),
@@ -309,18 +308,6 @@ def parse_desktop_file(filename, pixmaps, ):
                                             decode(encoding).split(';')),
             'mimetypes':  _filter_bool(data.get('mimetype', '').
                                             decode(encoding).split(';')),
-=======
-       result = {
-            'name':         data['name'],
-            'exec':         DKENTRY_EXECREPL.sub('', data['exec']),
-            'type':         data['type'],
-            'version':      float(data.get('version', 1.0)),
-            'encoding':     data.get('encoding', 'utf-8'),
-            'comment':      data.get('comment', None),
-            'categories':   _filter_bool(data.get('categories', '').split(';')),
-            'mimetypes':    _filter_bool(data.get('mimetype', '').split(';')),
->>>>>>> 864afc520fb9c2a9875032eb8cb36f0ede26191a
-        }
     except KeyError as exc:
         raise TypeError('file is not a valid *.desktop file. missing item ' +
                         '%s.' % exc.message)
@@ -336,13 +323,8 @@ def parse_desktop_file(filename, pixmaps, ):
     else:
         raise TypeError('file is not a valid *.desktop file. value for ' +
                         'NoDisplay is not true/false but %r.' % nodisplay)
-        
 
-<<<<<<< HEAD
     icon = data.get('icon', '').decode(encoding) or None
-=======
-    icon = data.get('icon', None)
->>>>>>> 864afc520fb9c2a9875032eb8cb36f0ede26191a
     if icon:
         if os.path.isabs(icon):
             pass
