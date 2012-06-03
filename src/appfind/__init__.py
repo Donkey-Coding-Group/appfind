@@ -308,6 +308,7 @@ def parse_desktop_file(filename, pixmaps, ):
                                             decode(encoding).split(';')),
             'mimetypes':  _filter_bool(data.get('mimetype', '').
                                             decode(encoding).split(';')),
+        }
     except KeyError as exc:
         raise TypeError('file is not a valid *.desktop file. missing item ' +
                         '%s.' % exc.message)
